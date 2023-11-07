@@ -6,8 +6,7 @@ import torch.nn as nn
 import matplotlib.pyplot as plt
 import gc
 import csv
-import zipfile
-import os
+
 """
 the main program
 here we can do different things through the menu() function
@@ -36,6 +35,9 @@ checkpoint -> calling it as a global function, will be useful in the future
                 Will be used to save the state of the model
 
 """
+# we unzip the files before starting
+data_files.unziping()
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 model = model_CNN.Net().to(device)
@@ -49,26 +51,6 @@ loaders = data_files.loader()
 dict_of_datas = data_files.datasets()
 
 checkpoint = None
-
-
-def unziping():
-    """
-
-    a void that uses the zipfile to extract files from the ZIP-file
-
-    when a file is already unpacked, skips it in the for loop
-    """
-
-    the_dir = r'data_folder'
-    the_zip = r'solvro-rekrutacja-zimowa-ml-2023.zip'
-    with zipfile.ZipFile(the_dir + r'/' + the_zip, 'r') as zip_ref:
-        print("Extracting files")
-        for member in zip_ref.namelist():
-            # if ! a file exists or ! there is a file named like that
-            if not os.path.exists(the_dir + r'/' + member) or not os.path.isfile(the_dir + r'/' + member):
-                zip_ref.extract(member, the_dir)
-                print(f"Extracted: {member}")
-
 
 def show_image_for_hoomans(matrix, value, message='Label: '):
     """
@@ -387,7 +369,6 @@ def main():
     No one knows, what could happen ...
     :return:
     """
-    unziping()
     print("INITIALIZING!")
     menu()
     gc.collect()

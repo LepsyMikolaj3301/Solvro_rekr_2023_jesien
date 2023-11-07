@@ -11,7 +11,26 @@ from torchvision import transforms
 import numpy as np
 from collections import Counter
 from customDataset import UppercaseAlphabetDataset, one_hot_2_value
+import zipfile
+import os
 
+
+def unziping():
+    """
+
+    a void that uses the zipfile to extract files from the ZIP-file
+
+    when a file is already unpacked, skips it in the for loop
+    """
+
+    the_dir = r'data_folder'
+    the_zip = r'solvro-rekrutacja-zimowa-ml-2023.zip'
+    with zipfile.ZipFile(the_dir + r'/' + the_zip, 'r') as zip_ref:
+        for member in zip_ref.namelist():
+            # if ! a file exists or ! there is a file named like that
+            if not os.path.exists(the_dir + r'/' + member) or not os.path.isfile(the_dir + r'/' + member):
+                zip_ref.extract(member, the_dir)
+                print(f"Extracted: {member}")
 
 
 def calculation_of_weights(label_array) -> list:
@@ -93,6 +112,7 @@ def datasets() -> dict:
     :rtype dataset_dict: dict
     """
 
+
     # the training data
     X_train = np.load(r'data_folder/X_train.npy')
     Y_train = np.load(r'data_folder/y_train.npy')
@@ -141,7 +161,7 @@ def loader() -> dict:
 
     the function creates:
      - a variable dt_set containing a DICTIONARY of datasets
-     - a data sampler for class weighing ( using WeightedRandomSampler )
+     - a data sampler for class weighing ( using WeightedRandomSampler ) !!!
 
     the training dataloader is sampled!
     the validation dataloder isn't !
@@ -162,17 +182,18 @@ def loader() -> dict:
 
     loaders = {
 
+        # if the training takes too long -> decrease the amount of loaders and the batch size
         'train': data_utils.DataLoader(dt_set['training_dataset'],
-                                       batch_size=100,
+                                       batch_size=200,
                                        shuffle=False,
-                                       num_workers=1,
+                                       num_workers=2,
                                        sampler=sampler
                                        ),
 
         'valid': data_utils.DataLoader(dt_set['validation_dataset'],
                                        batch_size=200,
                                        shuffle=True,
-                                       num_workers=1)
+                                       num_workers=2)
 
     }
     return loaders
