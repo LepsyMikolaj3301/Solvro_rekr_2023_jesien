@@ -1,5 +1,5 @@
-# Solvro_rekr_2023_zima
-Zadanie rekrutacyjne SOLVRO - sezon zima 2023 - Machine Learning
+# Solvro_rekr_2023_jesien
+Zadanie rekrutacyjne SOLVRO - sezon jesien 2023 - Machine Learning
 
 Model rozpoznający Duże Litery alfabetu według części listy MNIST przesłanej przez platforme Kaggle
 
