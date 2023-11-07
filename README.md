@@ -7,6 +7,12 @@ Pliki:
 main.py jest głównym programem, który zawiera menu przez które można model trenować
 NIE TRENUJEMY MODELU PRZEZ PLIK presentation_of_results.ipynb !
 
+NOTE !!!
+requirements nie działa dla wersji Python 3.8 lub nowszej!
+
+Z tego powodu tu podaję komendy z bibliotekami:
+'''pip install torch torchvision numpy matplotlib torchaudio --index-url https://download.pytorch.org/whl/cu117'''
+
 
 Disclaimer:
 
