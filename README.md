@@ -11,7 +11,8 @@ NOTE !!!
 requirements nie działa dla wersji Python 3.8 lub nowszej!
 
 Z tego powodu tu podaję komendy z bibliotekami:
-'''pip install torch torchvision numpy matplotlib torchaudio --index-url https://download.pytorch.org/whl/cu117'''
+
+```pip install torch torchvision numpy matplotlib torchaudio --index-url https://download.pytorch.org/whl/cu117```
 
 
 Disclaimer:
