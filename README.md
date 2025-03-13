@@ -22,10 +22,3 @@ So requirements doesnt work at this time, please install in your venv those pack
 
 ```<pip install> torch torchvision numpy matplotlib torchaudio --index-url https://download.pytorch.org/whl/cu117```
 
-
-Disclaimer:
-
-Projekt pisałem w ok. tydzień, zazwyczaj po 3 piwach późnymi wieczorami
-najlepsza dokładność jaką osiągnąłem to ok. 94% dla CrossEntropyLoss 
-Kod zapewnie nie najlepszej jakości 
-Pozdrawiam
